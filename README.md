@@ -12,3 +12,8 @@ set the path in main.py and init_model.py files in your computer.
 
 # internet
 you need to have an internet connection to download the models and to get your speech as output from the computer.
+
+# contact
+contact if you have any queries regarding this
+
+dk944176@gmail.com
