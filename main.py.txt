@@ -1,7 +1,18 @@
-# Download and create graph
-maybe_download_and_extract()
-create_graph()
-
+import time
+import pygame
+import cv2
+import os
+from classVideoStream import VideoStream
+from init_model import maybe_download_and_extract
+from init_model import create_graph
+import tensorflow as tf
+import numpy as np
+from gtts import gTTS
+from init_model import NodeLookup
+model_dir=r"C:/Users/dinesh kumar/Documents/inception/qwe"
+maybe_download_and_extract(model_dir)
+create_graph(model_dir)
+#NodeLookup(model_dir)
 # Variables declarations
 frame_count=0
 score=0
@@ -25,7 +36,7 @@ with tf.Session() as sess:
                 frame_count+=1
 
                 # Only run every 5 frames
-                if frame_count%5==0:
+                if frame_count%2==0:
 
                         # Save the image as the fist layer of inception is a DecodeJpeg
                         cv2.imwrite("current_frame.jpg",frame)
