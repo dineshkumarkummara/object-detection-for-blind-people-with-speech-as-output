@@ -1,13 +1,26 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Oct 20 19:16:41 2019
+
+@author: dinesh kumar
+"""
+import os
+import urllib
+import sys
+import tarfile
+import tensorflow as tf
+import re
+DATA_URL="http://download.tensorflow.org/models/image/imagenet/inception-2015-12-05.tgz"
 class NodeLookup(object):
+  model_dir=r"C:/Users/dinesh kumar/Documents/inception/qwe"
   def __init__(self,
                label_lookup_path=None,
                uid_lookup_path=None):
+    model_dir=r"C:/Users/dinesh kumar/Documents/inception/qwe"
     if not label_lookup_path:
-      label_lookup_path = os.path.join(
-          model_dir, 'imagenet_2012_challenge_label_map_proto.pbtxt')
+      label_lookup_path =r"C:\Users\dinesh kumar\Documents\inception\qwe\imagenet_2012_challenge_label_map_proto.pbtxt"
     if not uid_lookup_path:
-      uid_lookup_path = os.path.join(
-          model_dir, 'imagenet_synset_to_human_label_map.txt')
+      uid_lookup_path = r"C:\Users\dinesh kumar\Documents\inception\qwe\imagenet_synset_to_human_label_map.txt"
     self.node_lookup = self.load(label_lookup_path, uid_lookup_path)
 
   def load(self, label_lookup_path, uid_lookup_path):
@@ -53,7 +66,7 @@ class NodeLookup(object):
     return self.node_lookup[node_id]
 
 
-def create_graph():
+def create_graph(model_dir):
 
   # Creates graph from saved graph_def.pb.
   with tf.gfile.FastGFile(os.path.join(
@@ -62,8 +75,7 @@ def create_graph():
     graph_def.ParseFromString(f.read())
     _ = tf.import_graph_def(graph_def, name='')
 
-
-def maybe_download_and_extract():
+def maybe_download_and_extract(model_dir):
   # Download and extract model tar file
   dest_directory = model_dir
   if not os.path.exists(dest_directory):
