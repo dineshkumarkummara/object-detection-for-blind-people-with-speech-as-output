@@ -1,4 +1,6 @@
 # Threaded class for performance improvement
+from threading import Thread
+import cv2
 class VideoStream:
 	
 	def __init__(self, src=0):
@@ -12,9 +14,11 @@ class VideoStream:
 
 	def update(self):
                 while True:
-			if self.stopped:
-				return
-			(self.grabbed, self.frame) = self.stream.read()
+                    
+                    
+                			if self.stopped:
+                				return
+                			(self.grabbed, self.frame) = self.stream.read()
 	
 	def read(self):
                 # Return the latest frame
