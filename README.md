@@ -21,6 +21,6 @@ dk944176@gmail.com
 
 <a href="https://sourcerer.io/dineshkumarkummara"><img src="https://sourcerer.io/icons/logo-sharing.svg"height="48px" alt="Sourcerer"></a>
 
-<a href="https://sourcerer.io/dineshkumarkummara"><img src="https://avatars0.githubusercontent.com/u/35969117?v=4" height="50px" width="50px" alt=""/></a>
+
 
 <a href="https://sourcerer.io/dineshkumarkummara"><img src="https://img.shields.io/badge/Python-20%20commits-orange.svg" alt=""></a>
