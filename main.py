@@ -9,7 +9,7 @@ import tensorflow as tf
 import numpy as np
 from gtts import gTTS
 from init_model import NodeLookup
-model_dir=r"C:/Users/dinesh kumar/Documents/inception/qwe"
+model_dir=r"/Users/dinesh/Downloads/object-detection-for-blind-people-with-speech-as-output"
 maybe_download_and_extract(model_dir)
 create_graph(model_dir)
 #NodeLookup(model_dir)
@@ -28,7 +28,7 @@ font_color=(255,255,255)
 vs = VideoStream(src=0).start()
 
 # Start tensroflow session
-with tf.Session() as sess:
+with tf.compat.v1.Session() as sess:
         softmax_tensor = sess.graph.get_tensor_by_name('softmax:0')
 
         while True:
@@ -41,7 +41,7 @@ with tf.Session() as sess:
                         # Save the image as the fist layer of inception is a DecodeJpeg
                         cv2.imwrite("current_frame.jpg",frame)
 
-                        image_data = tf.gfile.FastGFile("./current_frame.jpg", 'rb').read()
+                        image_data = tf.io.gfile.GFile("./current_frame.jpg", 'rb').read()
                         predictions=sess.run(softmax_tensor,{'DecodeJpeg/contents:0':image_data})
 
                         predictions = np.squeeze(predictions)
